@@ -10,7 +10,7 @@ services:
         ports:            
             - "0.0.0.0:8080:8080"            
         volumes:            
-            - ./app:/app:rw    
+            - ./app:/app:rw 
 networks:
     balneabilidade:
         driver: bridge
