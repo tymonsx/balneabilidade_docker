@@ -18,7 +18,7 @@ def hello():
 def retornaTodosResultados():
     cidade = request.args.get('cidade')
     praia = request.args.get('praia')
-    dataFrameCsv = pandas.read_csv('resultados_mais_recentes_formatacao_datas_sp_beaches.csv')
+    dataFrameCsv = pandas.read_csv('sp_beaches_update.csv')
     print(dataFrameCsv[(dataFrameCsv["City"] == cidade.upper()) & (dataFrameCsv["Beach"] == praia.upper())])
     dataFrameCsv = dataFrameCsv[(dataFrameCsv["City"] == cidade.upper()) & (dataFrameCsv["Beach"] == praia.upper())]
     conversaoEmLista = dataFrameCsv[['Date','Enterococcus']].to_numpy().tolist()
@@ -33,7 +33,7 @@ def retornaTodosResultados():
 def resultadosUltimosDoisAnos():
     cidade = request.args.get('cidade')
     praia = request.args.get('praia')
-    dataFrameCsv = pandas.read_csv('resultados_mais_recentes_formatacao_datas_sp_beaches.csv')
+    dataFrameCsv = pandas.read_csv('sp_beaches_update.csv')
     print(dataFrameCsv[(dataFrameCsv["City"] == cidade.upper()) & (dataFrameCsv["Beach"] == praia.upper())])
     dataFrameCsv = dataFrameCsv[(dataFrameCsv["City"] == cidade.upper()) & (dataFrameCsv["Beach"] == praia.upper())].tail(104)
     conversaoEmLista = dataFrameCsv[['Date','Enterococcus']].to_numpy().tolist()
@@ -55,7 +55,7 @@ def preveProximasSemanas():
     print(model_path)
     loaded = tf.keras.models.load_model(model_path)
     print(loaded.summary())
-    dataFrameCsv = pandas.read_csv('resultados_mais_recentes_formatacao_datas_sp_beaches.csv')
+    dataFrameCsv = pandas.read_csv('sp_beaches_update.csv')
     frequenciasCsv = pandas.read_csv('frequencia_praias.csv')
     frequenciasCsv = frequenciasCsv[(frequenciasCsv["City"] == cidade.upper()) & (frequenciasCsv["Beach"] == praia.upper())]
     freqPraias = numpy.ravel(frequenciasCsv[['Frequency']])
